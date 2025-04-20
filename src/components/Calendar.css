@@ -1,0 +1,68 @@
+body {
+    font-family: 'Klee One', sans-serif;
+    background-color: #fffff7;
+  }
+  
+.calendar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .calendar-header,
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .calendar-cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    height: 60px;
+    cursor: pointer;
+    overflow: hidden; /* 文字がセルを超えないように隠す */
+    text-overflow: ellipsis; /* 文字が長すぎると「...」を表示 */
+    white-space: nowrap; /* 複数行にならないようにする */
+    max-width: 100%; /* セルの横幅を超えないように */
+  }
+  
+  .calendar-cell.header {
+    font-weight: bold;
+    background-color: #cce0d7;
+  }
+  
+  .calendar-cell.today {
+    background-color: #cceeff;
+  }
+  
+  /* Calendar.css の day セル内の合計表示にちょっと余白追加 */
+  .calendar-cell.day > div:last-child {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .calendar-cell.day > div:last-child {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  button {
+    padding: 12px 24px;  /* ボタンの内側に余白を追加 */
+    font-size: 18px;  /* 文字サイズを大きく */
+    background-color: #a8cebd;  /* ピンク色 */
+    color: white;  /* 文字色を白 */
+    border: none;  /* 枠線なし */
+    border-radius: 25px;  /* 丸みをつける */
+    cursor: pointer;  /* ポインターに変更 */
+    transition: background-color 0.3s, transform 0.2s;  /* ホバー時のアニメーション */
+  }
+  
+  button:hover {
+    background-color: #cce0d7;  /* ホバー時に色を変える */
+    transform: scale(1.05);  /* ホバー時に少し大きくなる */
+  }
+  
+  button:active {
+    transform: scale(1);  /* クリック時に元のサイズに戻る */
+  }
