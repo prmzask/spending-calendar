@@ -9,6 +9,7 @@ function DetailPage() {
     storeA: "",
     storeB: "",
     storeC: "",
+    storeD: "",
     menu: "", // ← ここに献立を追加
   });
 
@@ -20,6 +21,7 @@ function DetailPage() {
         storeA: saved[date].storeA || "",
         storeB: saved[date].storeB || "",
         storeC: saved[date].storeC || "",
+        storeD: saved[date].storeD || "",
         menu: saved[date].menu || "", // ← 献立も読み込み
       });
     }
@@ -86,6 +88,24 @@ function DetailPage() {
             type="number"
             name="storeC"
             value={data.storeC}
+            onChange={handleChange}
+            style={{
+              width: "100%",
+              height: "40px",
+              fontSize: "16px",
+              padding: "8px",
+              marginBottom: "10px",
+            }}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          外食　　: ¥
+          <input
+            type="number"
+            name="storeD"
+            value={data.storeD}
             onChange={handleChange}
             style={{
               width: "100%",
