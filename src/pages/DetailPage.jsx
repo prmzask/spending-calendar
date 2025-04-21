@@ -9,22 +9,19 @@ function DetailPage() {
     storeA: "",
     storeB: "",
     storeC: "",
-    storeD: "",
     menu: "", // ← ここに献立を追加
   });
 
   // 保存済みデータの読み込み
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("spendingData") || "{}");
-    if (saved[date]) {
-      setData({
-        storeA: saved[date].storeA || "",
-        storeB: saved[date].storeB || "",
-        storeC: saved[date].storeC || "",
-        storeD: saved[date].storeD || "",
-        menu: saved[date].menu || "", // ← 献立も読み込み
-      });
-    }
+    const existing = saved[date] || {};
+    setData({
+      storeA: existing.storeA || "",
+      storeB: existing.storeB || "",
+      storeC: existing.storeC || "",
+      menu: existing.menu || "",
+    });
   }, [date]);
 
   // 入力変更時
@@ -88,24 +85,6 @@ function DetailPage() {
             type="number"
             name="storeC"
             value={data.storeC}
-            onChange={handleChange}
-            style={{
-              width: "100%",
-              height: "40px",
-              fontSize: "16px",
-              padding: "8px",
-              marginBottom: "10px",
-            }}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          外食　　: ¥
-          <input
-            type="number"
-            name="storeD"
-            value={data.storeD}
             onChange={handleChange}
             style={{
               width: "100%",

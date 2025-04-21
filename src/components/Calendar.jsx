@@ -34,12 +34,13 @@ function Calendar({ year, month }) {
               : null;
 
           const spending = allData[dateStr];
-          const total =
-            spending && !isNaN(spending.storeA)
-              ? Number(spending.storeA || 0) +
-                Number(spending.storeB || 0) +
-                Number(spending.storeC || 0)
-              : null;
+          let total = 0;
+
+          if (spending) {
+            total += Number(spending.storeA || 0);
+            total += Number(spending.storeB || 0);
+            total += Number(spending.storeC || 0);
+          }
 
           const menu = spending?.menu;
 
@@ -51,9 +52,9 @@ function Calendar({ year, month }) {
             >
               <div>{day}</div>
 
-              {total != null && total > 0 && (
+              {total !== 0 && (
                 <div style={{ fontSize: "12px", marginTop: "4px", color: "#111" }}>
-                   ¥{total.toLocaleString()}
+                  ¥{total.toLocaleString()}
                 </div>
               )}
 
@@ -70,7 +71,7 @@ function Calendar({ year, month }) {
                   }}
                   title={menu}
                 >
-                   {menu}
+                  {menu}
                 </div>
               )}
             </div>

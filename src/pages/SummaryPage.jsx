@@ -66,7 +66,7 @@ function SummaryPage() {
           ← 前の月
         </button>
         <button onClick={() => setMonth(dayjs(month).add(1, "month").format("YYYY-MM"))}>
-          次の月 →
+          次の月 → 
         </button>
       </div>
 
