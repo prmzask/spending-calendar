@@ -76,11 +76,12 @@ function CalendarPage() {
         />
 
         <h2>月間支出まとめ</h2>
-        <p>コスモス: ¥{storeTotals.storeA}</p>
-        <p>マックス: ¥{storeTotals.storeB}</p>
-        <p>生協　　: ¥{storeTotals.storeC}</p>
-        <hr />
-        <p><strong>合計: ¥{monthlyTotal}</strong></p>
+        <p>コスモス: ¥{storeTotals.storeA.toLocaleString()}</p>
+<p>マックス: ¥{storeTotals.storeB.toLocaleString()}</p>
+<p>生協　　: ¥{storeTotals.storeC.toLocaleString()}</p>
+<hr />
+<p><strong>合計: ¥{monthlyTotal.toLocaleString()}</strong></p>
+
       </div>
     </div>
   );

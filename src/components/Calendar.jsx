@@ -53,7 +53,7 @@ function Calendar({ year, month }) {
 
               {total != null && total > 0 && (
                 <div style={{ fontSize: "12px", marginTop: "4px", color: "#111" }}>
-                  ¥{total}
+                   ¥{total.toLocaleString()}
                 </div>
               )}
 
