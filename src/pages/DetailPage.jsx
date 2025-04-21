@@ -9,8 +9,10 @@ function DetailPage() {
     storeA: "",
     storeB: "",
     storeC: "",
-    menu: "", // ← ここに献立を追加
+    storeD: "", // ← 追加
+    menu: "",
   });
+  
 
   // 保存済みデータの読み込み
   useEffect(() => {
@@ -20,8 +22,10 @@ function DetailPage() {
       storeA: existing.storeA || "",
       storeB: existing.storeB || "",
       storeC: existing.storeC || "",
+      storeD: existing.storeD || "", // ← 追加
       menu: existing.menu || "",
     });
+    
   }, [date]);
 
   // 入力変更時
@@ -96,6 +100,25 @@ function DetailPage() {
           />
         </label>
       </div>
+      <div>
+  <label>
+    外食　　: ¥
+    <input
+      type="number"
+      name="storeD"
+      value={data.storeD}
+      onChange={handleChange}
+      style={{
+        width: "100%",
+        height: "40px",
+        fontSize: "16px",
+        padding: "8px",
+        marginBottom: "10px",
+      }}
+    />
+  </label>
+</div>
+
       <div>
         <label>
           献立　　　:

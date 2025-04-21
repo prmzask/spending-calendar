@@ -26,7 +26,9 @@ function CalendarPage() {
     storeA: 0,
     storeB: 0,
     storeC: 0,
+    storeD: 0, // ← 追加
   };
+  
 
   for (const date in allData) {
     if (date.startsWith(currentMonthStr)) {
@@ -34,10 +36,13 @@ function CalendarPage() {
       storeTotals.storeA += Number(spending.storeA || 0);
       storeTotals.storeB += Number(spending.storeB || 0);
       storeTotals.storeC += Number(spending.storeC || 0);
+      storeTotals.storeD += Number(spending.storeD || 0); // ← 追加
       monthlyTotal +=
-        Number(spending.storeA || 0) +
-        Number(spending.storeB || 0) +
-        Number(spending.storeC || 0);
+  Number(spending.storeA || 0) +
+  Number(spending.storeB || 0) +
+  Number(spending.storeC || 0) +
+  Number(spending.storeD || 0); // ← 追加
+
     }
   }
 
@@ -79,6 +84,8 @@ function CalendarPage() {
         <p>コスモス: ¥{storeTotals.storeA.toLocaleString()}</p>
         <p>マックス: ¥{storeTotals.storeB.toLocaleString()}</p>
         <p>生協　　: ¥{storeTotals.storeC.toLocaleString()}</p>
+        <p>外食　　: ¥{storeTotals.storeD.toLocaleString()}</p>
+
         <hr />
         <p><strong>合計: ¥{monthlyTotal.toLocaleString()}</strong></p>
       </div>

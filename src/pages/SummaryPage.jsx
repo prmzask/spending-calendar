@@ -16,21 +16,26 @@ function SummaryPage() {
       .filter((date) => date.startsWith(month))
       .map((date) => allData[date]);
 
-    const totals = {
-      storeA: 0,
-      storeB: 0,
-      storeC: 0,
-      total: 0,
-    };
+      const totals = {
+        storeA: 0,
+        storeB: 0,
+        storeC: 0,
+        storeD: 0, // ← 追加
+        total: 0,
+      };
+      
 
     // 月別データを集計
     monthData.forEach((data) => {
       totals.storeA += Number(data.storeA || 0);
       totals.storeB += Number(data.storeB || 0);
       totals.storeC += Number(data.storeC || 0);
+      totals.storeD += Number(data.storeD || 0); // ← 追加
+
     });
 
-    totals.total = totals.storeA + totals.storeB + totals.storeC;
+    totals.total = totals.storeA + totals.storeB + totals.storeC + totals.storeD;
+
 
     setSummaryData(totals); // 集計結果をstateに保存
   };
@@ -53,6 +58,8 @@ function SummaryPage() {
             <div>コスモス: ¥{summaryData.storeA}</div>
             <div>マックス: ¥{summaryData.storeB}</div>
             <div>生協　　: ¥{summaryData.storeC}</div>
+            <div>外食　　: ¥{summaryData.storeD}</div>
+
             <div>合計　　: ¥{summaryData.total}</div>
           </>
         ) : (

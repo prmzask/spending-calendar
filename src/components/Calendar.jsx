@@ -40,7 +40,9 @@ function Calendar({ year, month }) {
             total += Number(spending.storeA || 0);
             total += Number(spending.storeB || 0);
             total += Number(spending.storeC || 0);
+            total += Number(spending.storeD || 0); // ← 追加
           }
+          
 
           const menu = spending?.menu;
 
