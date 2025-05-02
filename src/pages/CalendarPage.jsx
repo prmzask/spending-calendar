@@ -55,6 +55,11 @@ function CalendarPage() {
       </h1>
       <Calendar year={year} month={month} />
 
+      <div style={{ marginTop: "20px" }}>
+  <button onClick={() => window.location.href = "/menu-list"}>献立一覧へ</button>
+</div>
+      
+
       {/* 🌟 出費まとめ表示エリア */}
       <div
         style={{
