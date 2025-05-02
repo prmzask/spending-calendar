@@ -1,7 +1,7 @@
-// MenuListPage.jsx
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useNavigate, useLocation } from "react-router-dom";
+import "dayjs/locale/ja"; // 日本語ロケールをインポート
 
 function MenuListPage() {
   const [menuList, setMenuList] = useState([]);
@@ -10,6 +10,9 @@ function MenuListPage() {
   const location = useLocation(); // ← ページ遷移検知
 
   useEffect(() => {
+    // 日本語ロケールを設定
+    dayjs.locale("ja");
+
     const allData = JSON.parse(localStorage.getItem("spendingData") || "{}");
     const list = [];
 
@@ -30,8 +33,18 @@ function MenuListPage() {
 
       <ul style={{ listStyle: "none", padding: 0 }}>
         {menuList.map((item) => (
-          <li key={item.date} style={{ marginBottom: "12px", borderBottom: "1px solid #ccc", paddingBottom: "8px" }}>
-            <strong>{item.date}</strong>: {item.menu}
+          <li
+            key={item.date}
+            style={{
+              marginBottom: "12px",
+              borderBottom: "1px solid #ccc",
+              paddingBottom: "8px",
+            }}
+          >
+            <strong>
+              {dayjs(item.date).format("M月D日")} ({dayjs(item.date).format("ddd")})
+            </strong>
+            : {item.menu}
           </li>
         ))}
       </ul>
@@ -40,7 +53,10 @@ function MenuListPage() {
         <button onClick={() => setMonth(dayjs(month).subtract(1, "month").format("YYYY-MM"))}>
           ← 前の月
         </button>
-        <button onClick={() => setMonth(dayjs(month).add(1, "month").format("YYYY-MM"))} style={{ marginLeft: "10px" }}>
+        <button
+          onClick={() => setMonth(dayjs(month).add(1, "month").format("YYYY-MM"))}
+          style={{ marginLeft: "10px" }}
+        >
           次の月 →
         </button>
       </div>
